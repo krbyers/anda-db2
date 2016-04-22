@@ -1,0 +1,17 @@
+﻿CREATE TABLE [dbo].[FPITMBRS] (
+    [IRITEM]       DECIMAL (6) NULL,
+    [IRWHSE]       DECIMAL (2) NULL,
+    [IRCTYP]       DECIMAL (4) NULL,
+    [IRQHRS]       DECIMAL (7) NULL,
+    [IRONLY]       CHAR (1)    NULL,
+    [IRBYLM]       CHAR (1)    NULL,
+    [FPITMBRS_key] INT         IDENTITY (1, 1) NOT NULL,
+    [load_date]    DATETIME    CONSTRAINT [DF_FPITMBRS_load_date] DEFAULT (getdate()) NOT NULL,
+    CONSTRAINT [PK_FPITMBRS] PRIMARY KEY NONCLUSTERED ([FPITMBRS_key] ASC)
+);
+
+
+GO
+CREATE CLUSTERED INDEX [FPITMBRS_IX_clustered]
+    ON [dbo].[FPITMBRS]([IRITEM] ASC, [IRWHSE] ASC, [IRCTYP] ASC);
+

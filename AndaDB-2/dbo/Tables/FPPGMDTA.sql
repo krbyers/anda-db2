@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[FPPGMDTA] (
+    [PDPROGRAM]    CHAR (10)     NULL,
+    [PDFORMAT]     CHAR (10)     NULL,
+    [PDSEQ]        DECIMAL (5)   NULL,
+    [PDDATA]       VARCHAR (MAX) NULL,
+    [FPPGMDTA_key] INT           IDENTITY (1, 1) NOT NULL,
+    [load_date]    DATETIME      CONSTRAINT [DF_FPPGMDTA_load_date] DEFAULT (getdate()) NOT NULL,
+    CONSTRAINT [PK_FPPGMDTA] PRIMARY KEY NONCLUSTERED ([FPPGMDTA_key] ASC)
+);
+
+
+GO
+CREATE CLUSTERED INDEX [FPPGMDTA_IX_clustered]
+    ON [dbo].[FPPGMDTA]([PDPROGRAM] ASC);
+
